@@ -1,36 +1,23 @@
-import React from 'react';
+import {useState} from 'react';
 
-class App extends React.Component {
+const App = () => {
 
-    constructor(props) {
-        super(props);
-        this.state = {value: 0};
-    }
+    const [value, setValue] = useState(0);
+    
+    const handleIncrement = () => setValue(value+1);
+    const handleDecrement = () => setValue(value-1);
+    const handleReset = () => setValue(0);
 
-    handleIncrement() {
-        this.setState({value: this.state.value+1});
-    }
-
-    handleDecrement() {
-        this.setState({value: this.state.value-1});
-    }
-
-    handleReset() {
-        this.setState({value: 0});
-    }
-
-    render() {
-        return (
-            <div>
-                {this.state.value + ' '}
-                <button onClick={() => this.handleIncrement()}>+</button>
-                {' '}
-                <button onClick={() => this.handleDecrement()}>-</button>
-                {' '}
-                <button onClick={() => this.handleReset()}>Reset</button>
-            </div>
-        );
-    }
+    return (
+        <div>
+            {value + ' '}
+            <button onClick={handleIncrement}>+</button>
+            {' '}
+            <button onClick={handleDecrement}>-</button>
+            {' '}
+            <button onClick={handleReset}>Reset</button>
+        </div>
+    );
 
 }
 
